@@ -1,0 +1,17 @@
+\begin{table}[h]
+\centering
+\caption{PE-Core L14-336 has a 32-token text context, the shortest of the five models. We tokenized every distinct caption used across the experiment with the PE-Core BPE tokenizer and counted truncation. Only one of 1873 captions exceeded the 30-token content limit (0.05\%); PE-Core results are therefore not biased by silent caption truncation.}
+\label{tab:t7_pecore}
+\small
+\begin{tabular}{lc}
+\toprule
+Quantity & Value \\
+\midrule
+Distinct captions checked & 1873 \\
+PE-Core context length & 32 tokens \\
+Maximum content tokens (BOS + EOT excluded) & 30 \\
+Captions exceeding 30 BPE tokens & 1 \\
+Fraction truncated & 0.05\% \\
+\bottomrule
+\end{tabular}
+\end{table}

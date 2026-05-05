@@ -1,0 +1,19 @@
+\begin{table}[h]
+\centering
+\caption{Dominance regression $R^2$ values, per model. The ordinal version uses raw severity (1 to 5); the measured-damage version uses within-modality damage percentiles. The ordinal version shows max outpredicting min; the measured-damage version reverses, indicating the ordinal effect was confounded by non-commensurate severity scales. We report this here for transparency and demote it from the main paper.}
+\label{tab:t4_dominance}
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{Ordinal severity} & \multicolumn{2}{c}{Measured damage percentile} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Model & $R^2$(max) & $R^2$(min) & $R^2$(more) & $R^2$(less) \\
+\midrule
+CLIP B/32 & 0.174 & 0.124 & 0.116 & 0.214 \\
+CLIP L/14 & 0.152 & 0.115 & 0.098 & 0.215 \\
+OpenCLIP L/14 (LAION) & 0.132 & 0.089 & 0.088 & 0.151 \\
+PE-Core L/14 & 0.185 & 0.136 & 0.122 & 0.245 \\
+SigLIP 2 SO400M & 0.144 & 0.112 & 0.094 & 0.174 \\
+\bottomrule
+\end{tabular}
+\end{table}

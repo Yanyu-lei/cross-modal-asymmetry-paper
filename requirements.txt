@@ -1,0 +1,35 @@
+# Runtime requirements
+# Python 3.12 (tested)
+
+# Core scientific stack
+numpy>=2.0,<3
+pandas>=2,<3
+Pillow>=10,<12
+matplotlib>=3.8,<4
+pyyaml>=6,<7
+tqdm>=4.66,<5
+requests>=2.31,<3
+
+# Models
+torch>=2.2,<3
+torchvision>=0.17,<1
+open_clip_torch>=3.0,<4
+transformers>=4.41,<5
+einops>=0.8,<1
+timm>=1.0,<2
+sentencepiece>=0.2
+ftfy>=6.1
+safetensors>=0.4
+huggingface_hub>=0.24
+
+# Datasets
+datasets>=2.20,<4
+
+# PE-Core (Meta perception_models)
+# Install separately with --no-deps because upstream pins decord==0.6.0
+# which has no Python 3.12 wheel:
+#   pip install --no-deps git+https://github.com/facebookresearch/perception_models.git
+
+# Testing
+pytest>=8,<9
+pytest-cov>=4,<5

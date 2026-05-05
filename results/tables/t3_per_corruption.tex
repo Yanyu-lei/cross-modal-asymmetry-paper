@@ -1,0 +1,17 @@
+\begin{table}[h]
+\centering
+\caption{Per-corruption Recall@1 for the joint-grid corruption (Gaussian noise on the image side, masking on the text side). Recall@1 is reported at severity 5 (most damaged), with bootstrap 95\% CIs in brackets, separately for i2t and t2i directions across all five models.}
+\label{tab:t3_per_corruption}
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+Model & i2t R@1 sev 1 & i2t R@1 sev 5 & t2i R@1 sev 1 & t2i R@1 sev 5 \\
+\midrule
+CLIP B/32 & 0.51 [0.50, 0.52] & 0.32 [0.31, 0.34] & 0.43 [0.42, 0.44] & 0.15 [0.14, 0.16] \\
+CLIP L/14 & 0.54 [0.52, 0.55] & 0.41 [0.39, 0.42] & 0.47 [0.45, 0.48] & 0.16 [0.15, 0.17] \\
+OpenCLIP L/14 (LAION) & 0.63 [0.62, 0.64] & 0.46 [0.45, 0.47] & 0.59 [0.58, 0.60] & 0.22 [0.20, 0.23] \\
+SigLIP 2 SO400M & 0.69 [0.67, 0.70] & 0.56 [0.55, 0.57] & 0.67 [0.65, 0.68] & 0.25 [0.24, 0.26] \\
+PE-Core L/14 & 0.70 [0.69, 0.71] & 0.60 [0.59, 0.62] & 0.65 [0.63, 0.67] & 0.25 [0.24, 0.26] \\
+\bottomrule
+\end{tabular}
+\end{table}

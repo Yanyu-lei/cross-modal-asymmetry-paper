@@ -1,0 +1,16 @@
+# Experiment-level knobs. Edit these to rescale runs without touching code.
+
+n_pairs_main: 300        # main spokes (image fid, text fid, match retention)
+n_pairs_retrieval: 1000  # retrieval; falls back to 300 + bootstrap if SO400M is too slow
+seeds: [0, 1, 2]
+
+match_retention:
+  k_pool: 64             # mismatched-caption pool size (50-100 range; rerun at 100 later if compute allows)
+  pool_disjoint: true    # pool captions are excluded from the eval pairs
+
+joint_grid:
+  vision_corruption: gaussian_noise
+  text_corruption: mask
+  severities: [1, 2, 3, 4, 5]   # 5x5 grid
+
+manifest_path: results/coco_manifest.json

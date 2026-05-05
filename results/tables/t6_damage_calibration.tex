@@ -1,0 +1,42 @@
+\begin{table}[h]
+\centering
+\caption{Mean input-side damage per (corruption, severity), pooled across 3 seeds and 300 main-spoke pairs. Image: SSIM (higher is less damaged) and PSNR (dB, capped at 60). Text: normalized token edit distance (higher is more damaged) and BLEU with method-1 smoothing (higher is less damaged). Severity values produce monotonically increasing damage within each corruption.}
+\label{tab:t6_damage}
+\footnotesize
+\begin{tabular}{llcccc}
+\toprule
+Modality & Corruption & Sev & SSIM & PSNR & Edit dist. / BLEU \\
+\midrule
+image & gaussian_noise & 1 & 0.765 & 30.2 & ---  \\
+image & gaussian_noise & 2 & 0.538 & 24.4 & ---  \\
+image & gaussian_noise & 3 & 0.405 & 21.0 & ---  \\
+image & gaussian_noise & 4 & 0.262 & 16.9 & ---  \\
+image & gaussian_noise & 5 & 0.162 & 13.3 & ---  \\
+image & gaussian_blur & 1 & 0.975 & 35.5 & ---  \\
+image & gaussian_blur & 2 & 0.830 & 27.6 & ---  \\
+image & gaussian_blur & 3 & 0.673 & 24.3 & ---  \\
+image & gaussian_blur & 4 & 0.571 & 22.5 & ---  \\
+image & gaussian_blur & 5 & 0.523 & 21.4 & ---  \\
+image & cutout & 1 & 0.946 & 19.7 & ---  \\
+image & cutout & 2 & 0.894 & 16.6 & ---  \\
+image & cutout & 3 & 0.791 & 13.2 & ---  \\
+image & cutout & 4 & 0.638 & 10.6 & ---  \\
+image & cutout & 5 & 0.486 & 9.0 & ---  \\
+text & mask & 1 & --- & --- & 0.102 / 0.741 \\
+text & mask & 2 & --- & --- & 0.206 / 0.516 \\
+text & mask & 3 & --- & --- & 0.403 / 0.194 \\
+text & mask & 4 & --- & --- & 0.597 / 0.061 \\
+text & mask & 5 & --- & --- & 0.794 / 0.005 \\
+text & shuffle & 1 & --- & --- & 0.104 / 0.763 \\
+text & shuffle & 2 & --- & --- & 0.111 / 0.750 \\
+text & shuffle & 3 & --- & --- & 0.296 / 0.386 \\
+text & shuffle & 4 & --- & --- & 0.475 / 0.177 \\
+text & shuffle & 5 & --- & --- & 0.647 / 0.092 \\
+text & replace & 1 & --- & --- & 0.102 / 0.728 \\
+text & replace & 2 & --- & --- & 0.206 / 0.503 \\
+text & replace & 3 & --- & --- & 0.403 / 0.195 \\
+text & replace & 4 & --- & --- & 0.597 / 0.073 \\
+text & replace & 5 & --- & --- & 0.794 / 0.030 \\
+\bottomrule
+\end{tabular}
+\end{table}

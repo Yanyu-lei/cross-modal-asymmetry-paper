@@ -1,0 +1,436 @@
+
+==============================================================================
+1. INPUT-SIDE DAMAGE TABLE (model-independent)
+==============================================================================
+Per (modality, corruption_type, severity): mean damage with bootstrap 95% CI, n pairs.
+
+modality corruption_type  severity             metric    mean   ci_lo   ci_hi   n
+   image          cutout         1               ssim  0.9462  0.9460  0.9464 900
+   image          cutout         1               psnr 19.7492 19.5205 19.9789 900
+   image          cutout         1        damage_ssim  0.0538  0.0536  0.0540 900
+   image          cutout         2               ssim  0.8944  0.8941  0.8948 900
+   image          cutout         2               psnr 16.6205 16.4094 16.8538 900
+   image          cutout         2        damage_ssim  0.1056  0.1052  0.1059 900
+   image          cutout         3               ssim  0.7911  0.7906  0.7916 900
+   image          cutout         3               psnr 13.2147 13.0591 13.3738 900
+   image          cutout         3        damage_ssim  0.2089  0.2084  0.2094 900
+   image          cutout         4               ssim  0.6379  0.6369  0.6389 900
+   image          cutout         4               psnr 10.6483 10.5123 10.7920 900
+   image          cutout         4        damage_ssim  0.3621  0.3611  0.3631 900
+   image          cutout         5               ssim  0.4856  0.4843  0.4871 900
+   image          cutout         5               psnr  9.0114  8.8826  9.1411 900
+   image          cutout         5        damage_ssim  0.5144  0.5129  0.5157 900
+   image   gaussian_blur         1               ssim  0.9746  0.9736  0.9756 900
+   image   gaussian_blur         1               psnr 35.4878 35.2252 35.7650 900
+   image   gaussian_blur         1        damage_ssim  0.0254  0.0244  0.0264 900
+   image   gaussian_blur         2               ssim  0.8302  0.8247  0.8358 900
+   image   gaussian_blur         2               psnr 27.6004 27.3677 27.8446 900
+   image   gaussian_blur         2        damage_ssim  0.1698  0.1642  0.1753 900
+   image   gaussian_blur         3               ssim  0.6725  0.6635  0.6817 900
+   image   gaussian_blur         3               psnr 24.2763 24.0629 24.4958 900
+   image   gaussian_blur         3        damage_ssim  0.3275  0.3183  0.3365 900
+   image   gaussian_blur         4               ssim  0.5712  0.5611  0.5815 900
+   image   gaussian_blur         4               psnr 22.4529 22.2592 22.6553 900
+   image   gaussian_blur         4        damage_ssim  0.4288  0.4185  0.4389 900
+   image   gaussian_blur         5               ssim  0.5233  0.5129  0.5341 900
+   image   gaussian_blur         5               psnr 21.4234 21.2305 21.6154 900
+   image   gaussian_blur         5        damage_ssim  0.4767  0.4659  0.4871 900
+   image  gaussian_noise         1               ssim  0.7645  0.7590  0.7699 900
+   image  gaussian_noise         1               psnr 30.2403 30.2269 30.2556 900
+   image  gaussian_noise         1        damage_ssim  0.2355  0.2301  0.2410 900
+   image  gaussian_noise         2               ssim  0.5375  0.5294  0.5457 900
+   image  gaussian_noise         2               psnr 24.3738 24.3558 24.3918 900
+   image  gaussian_noise         2        damage_ssim  0.4625  0.4543  0.4706 900
+   image  gaussian_noise         3               ssim  0.4048  0.3967  0.4130 900
+   image  gaussian_noise         3               psnr 21.0005 20.9794 21.0212 900
+   image  gaussian_noise         3        damage_ssim  0.5952  0.5870  0.6033 900
+   image  gaussian_noise         4               ssim  0.2619  0.2549  0.2689 900
+   image  gaussian_noise         4               psnr 16.8803 16.8560 16.9046 900
+   image  gaussian_noise         4        damage_ssim  0.7381  0.7311  0.7451 900
+   image  gaussian_noise         5               ssim  0.1616  0.1567  0.1666 900
+   image  gaussian_noise         5               psnr 13.3416 13.3189 13.3649 900
+   image  gaussian_noise         5        damage_ssim  0.8384  0.8334  0.8433 900
+    text            mask         1 norm_edit_distance  0.1018  0.1008  0.1028 900
+    text            mask         1               bleu  0.7407  0.7341  0.7470 900
+    text            mask         1        damage_bleu  0.2593  0.2530  0.2659 900
+    text            mask         2 norm_edit_distance  0.2061  0.2044  0.2078 900
+    text            mask         2               bleu  0.5163  0.5062  0.5262 900
+    text            mask         2        damage_bleu  0.4837  0.4738  0.4938 900
+    text            mask         3 norm_edit_distance  0.4026  0.4008  0.4045 900
+    text            mask         3               bleu  0.1943  0.1870  0.2017 900
+    text            mask         3        damage_bleu  0.8057  0.7983  0.8130 900
+    text            mask         4 norm_edit_distance  0.5974  0.5955  0.5992 900
+    text            mask         4               bleu  0.0611  0.0584  0.0639 900
+    text            mask         4        damage_bleu  0.9389  0.9361  0.9416 900
+    text            mask         5 norm_edit_distance  0.7939  0.7922  0.7956 900
+    text            mask         5               bleu  0.0049  0.0047  0.0051 900
+    text            mask         5        damage_bleu  0.9951  0.9949  0.9953 900
+    text         replace         1 norm_edit_distance  0.1018  0.1008  0.1028 900
+    text         replace         1               bleu  0.7281  0.7215  0.7344 900
+    text         replace         1        damage_bleu  0.2719  0.2656  0.2785 900
+    text         replace         2 norm_edit_distance  0.2061  0.2044  0.2078 900
+    text         replace         2               bleu  0.5035  0.4937  0.5133 900
+    text         replace         2        damage_bleu  0.4965  0.4867  0.5063 900
+    text         replace         3 norm_edit_distance  0.4026  0.4008  0.4045 900
+    text         replace         3               bleu  0.1948  0.1875  0.2021 900
+    text         replace         3        damage_bleu  0.8052  0.7979  0.8125 900
+    text         replace         4 norm_edit_distance  0.5973  0.5953  0.5991 900
+    text         replace         4               bleu  0.0730  0.0699  0.0763 900
+    text         replace         4        damage_bleu  0.9270  0.9237  0.9301 900
+    text         replace         5 norm_edit_distance  0.7938  0.7921  0.7955 900
+    text         replace         5               bleu  0.0297  0.0291  0.0304 900
+    text         replace         5        damage_bleu  0.9703  0.9696  0.9709 900
+    text         shuffle         1 norm_edit_distance  0.1040  0.0967  0.1110 900
+    text         shuffle         1               bleu  0.7626  0.7457  0.7798 900
+    text         shuffle         1        damage_bleu  0.2374  0.2202  0.2543 900
+    text         shuffle         2 norm_edit_distance  0.1110  0.1042  0.1175 900
+    text         shuffle         2               bleu  0.7500  0.7337  0.7657 900
+    text         shuffle         2        damage_bleu  0.2500  0.2343  0.2663 900
+    text         shuffle         3 norm_edit_distance  0.2958  0.2892  0.3032 900
+    text         shuffle         3               bleu  0.3861  0.3698  0.4013 900
+    text         shuffle         3        damage_bleu  0.6139  0.5987  0.6302 900
+    text         shuffle         4 norm_edit_distance  0.4751  0.4675  0.4821 900
+    text         shuffle         4               bleu  0.1774  0.1675  0.1876 900
+    text         shuffle         4        damage_bleu  0.8226  0.8124  0.8325 900
+    text         shuffle         5 norm_edit_distance  0.6473  0.6391  0.6554 900
+    text         shuffle         5               bleu  0.0917  0.0864  0.0977 900
+    text         shuffle         5        damage_bleu  0.9083  0.9023  0.9136 900
+
+→ Saved: results/calibration_damage_table.csv
+
+==============================================================================
+2. WITHIN-MODALITY DAMAGE CURVES (retention margin vs input damage)
+==============================================================================
+Per-condition mean retention_margin and mean input damage; one curve per model per modality.
+
+--- IMAGE-SIDE: retention_margin vs damage_ssim per condition ---
+               model vision_corruption  image_severity  retention_margin  damage_ssim   ssim    psnr   n
+     openai_clip_b32     gaussian_blur               1            0.1564       0.0254 0.9746 35.4878 900
+     openai_clip_b32            cutout               1            0.1461       0.0538 0.9462 19.7492 900
+     openai_clip_b32            cutout               2            0.1400       0.1056 0.8944 16.6205 900
+     openai_clip_b32     gaussian_blur               2            0.1523       0.1698 0.8302 27.6004 900
+     openai_clip_b32            cutout               3            0.1280       0.2089 0.7911 13.2147 900
+     openai_clip_b32    gaussian_noise               1            0.1573       0.2355 0.7645 30.2403 900
+     openai_clip_b32     gaussian_blur               3            0.1425       0.3275 0.6725 24.2763 900
+     openai_clip_b32            cutout               4            0.1083       0.3621 0.6379 10.6483 900
+     openai_clip_b32     gaussian_blur               4            0.1244       0.4288 0.5712 22.4529 900
+     openai_clip_b32    gaussian_noise               2            0.1548       0.4625 0.5375 24.3738 900
+     openai_clip_b32     gaussian_blur               5            0.1081       0.4767 0.5233 21.4234 900
+     openai_clip_b32            cutout               5            0.0833       0.5144 0.4856  9.0114 900
+     openai_clip_b32    gaussian_noise               3            0.1529       0.5952 0.4048 21.0005 900
+     openai_clip_b32    gaussian_noise               4            0.1486       0.7381 0.2619 16.8803 900
+     openai_clip_b32    gaussian_noise               5            0.1392       0.8384 0.1616 13.3416 900
+     openai_clip_l14     gaussian_blur               1            0.1732       0.0254 0.9746 35.4878 900
+     openai_clip_l14            cutout               1            0.1597       0.0538 0.9462 19.7492 900
+     openai_clip_l14            cutout               2            0.1546       0.1056 0.8944 16.6205 900
+     openai_clip_l14     gaussian_blur               2            0.1681       0.1698 0.8302 27.6004 900
+     openai_clip_l14            cutout               3            0.1423       0.2089 0.7911 13.2147 900
+     openai_clip_l14    gaussian_noise               1            0.1758       0.2355 0.7645 30.2403 900
+     openai_clip_l14     gaussian_blur               3            0.1609       0.3275 0.6725 24.2763 900
+     openai_clip_l14            cutout               4            0.1251       0.3621 0.6379 10.6483 900
+     openai_clip_l14     gaussian_blur               4            0.1525       0.4288 0.5712 22.4529 900
+     openai_clip_l14    gaussian_noise               2            0.1737       0.4625 0.5375 24.3738 900
+     openai_clip_l14     gaussian_blur               5            0.1432       0.4767 0.5233 21.4234 900
+     openai_clip_l14            cutout               5            0.1065       0.5144 0.4856  9.0114 900
+     openai_clip_l14    gaussian_noise               3            0.1722       0.5952 0.4048 21.0005 900
+     openai_clip_l14    gaussian_noise               4            0.1692       0.7381 0.2619 16.8803 900
+     openai_clip_l14    gaussian_noise               5            0.1616       0.8384 0.1616 13.3416 900
+openclip_l14_laion2b     gaussian_blur               1            0.2834       0.0254 0.9746 35.4878 900
+openclip_l14_laion2b            cutout               1            0.2679       0.0538 0.9462 19.7492 900
+openclip_l14_laion2b            cutout               2            0.2592       0.1056 0.8944 16.6205 900
+openclip_l14_laion2b     gaussian_blur               2            0.2778       0.1698 0.8302 27.6004 900
+openclip_l14_laion2b            cutout               3            0.2365       0.2089 0.7911 13.2147 900
+openclip_l14_laion2b    gaussian_noise               1            0.2850       0.2355 0.7645 30.2403 900
+openclip_l14_laion2b     gaussian_blur               3            0.2719       0.3275 0.6725 24.2763 900
+openclip_l14_laion2b            cutout               4            0.2005       0.3621 0.6379 10.6483 900
+openclip_l14_laion2b     gaussian_blur               4            0.2708       0.4288 0.5712 22.4529 900
+openclip_l14_laion2b    gaussian_noise               2            0.2819       0.4625 0.5375 24.3738 900
+openclip_l14_laion2b     gaussian_blur               5            0.2633       0.4767 0.5233 21.4234 900
+openclip_l14_laion2b            cutout               5            0.1571       0.5144 0.4856  9.0114 900
+openclip_l14_laion2b    gaussian_noise               3            0.2784       0.5952 0.4048 21.0005 900
+openclip_l14_laion2b    gaussian_noise               4            0.2717       0.7381 0.2619 16.8803 900
+openclip_l14_laion2b    gaussian_noise               5            0.2555       0.8384 0.1616 13.3416 900
+      pecore_l14_336     gaussian_blur               1            0.2283       0.0254 0.9746 35.4878 900
+      pecore_l14_336            cutout               1            0.2157       0.0538 0.9462 19.7492 900
+      pecore_l14_336            cutout               2            0.2099       0.1056 0.8944 16.6205 900
+      pecore_l14_336     gaussian_blur               2            0.2204       0.1698 0.8302 27.6004 900
+      pecore_l14_336            cutout               3            0.1982       0.2089 0.7911 13.2147 900
+      pecore_l14_336    gaussian_noise               1            0.2274       0.2355 0.7645 30.2403 900
+      pecore_l14_336     gaussian_blur               3            0.2112       0.3275 0.6725 24.2763 900
+      pecore_l14_336            cutout               4            0.1811       0.3621 0.6379 10.6483 900
+      pecore_l14_336     gaussian_blur               4            0.2050       0.4288 0.5712 22.4529 900
+      pecore_l14_336    gaussian_noise               2            0.2241       0.4625 0.5375 24.3738 900
+      pecore_l14_336     gaussian_blur               5            0.2006       0.4767 0.5233 21.4234 900
+      pecore_l14_336            cutout               5            0.1647       0.5144 0.4856  9.0114 900
+      pecore_l14_336    gaussian_noise               3            0.2216       0.5952 0.4048 21.0005 900
+      pecore_l14_336    gaussian_noise               4            0.2164       0.7381 0.2619 16.8803 900
+      pecore_l14_336    gaussian_noise               5            0.2081       0.8384 0.1616 13.3416 900
+  siglip2_so400m_384     gaussian_blur               1            0.2088       0.0254 0.9746 35.4878 900
+  siglip2_so400m_384            cutout               1            0.1932       0.0538 0.9462 19.7492 900
+  siglip2_so400m_384            cutout               2            0.1880       0.1056 0.8944 16.6205 900
+  siglip2_so400m_384     gaussian_blur               2            0.2083       0.1698 0.8302 27.6004 900
+  siglip2_so400m_384            cutout               3            0.1753       0.2089 0.7911 13.2147 900
+  siglip2_so400m_384    gaussian_noise               1            0.2056       0.2355 0.7645 30.2403 900
+  siglip2_so400m_384     gaussian_blur               3            0.1976       0.3275 0.6725 24.2763 900
+  siglip2_so400m_384            cutout               4            0.1573       0.3621 0.6379 10.6483 900
+  siglip2_so400m_384     gaussian_blur               4            0.1872       0.4288 0.5712 22.4529 900
+  siglip2_so400m_384    gaussian_noise               2            0.2047       0.4625 0.5375 24.3738 900
+  siglip2_so400m_384     gaussian_blur               5            0.1753       0.4767 0.5233 21.4234 900
+  siglip2_so400m_384            cutout               5            0.1405       0.5144 0.4856  9.0114 900
+  siglip2_so400m_384    gaussian_noise               3            0.2042       0.5952 0.4048 21.0005 900
+  siglip2_so400m_384    gaussian_noise               4            0.1994       0.7381 0.2619 16.8803 900
+  siglip2_so400m_384    gaussian_noise               5            0.1865       0.8384 0.1616 13.3416 900
+
+--- TEXT-SIDE: retention_margin vs damage_bleu per condition ---
+               model text_corruption  text_severity  retention_margin  damage_bleu   bleu  norm_edit_distance   n
+     openai_clip_b32         shuffle              1            0.1496       0.2374 0.7626              0.1040 900
+     openai_clip_b32         shuffle              2            0.1479       0.2500 0.7500              0.1110 900
+     openai_clip_b32            mask              1            0.1439       0.2593 0.7407              0.1018 900
+     openai_clip_b32         replace              1            0.1377       0.2719 0.7281              0.1018 900
+     openai_clip_b32            mask              2            0.1272       0.4837 0.5163              0.2061 900
+     openai_clip_b32         replace              2            0.1161       0.4965 0.5035              0.2061 900
+     openai_clip_b32         shuffle              3            0.1371       0.6139 0.3861              0.2958 900
+     openai_clip_b32         replace              3            0.0780       0.8052 0.1948              0.4026 900
+     openai_clip_b32            mask              3            0.0984       0.8057 0.1943              0.4026 900
+     openai_clip_b32         shuffle              4            0.1278       0.8226 0.1774              0.4751 900
+     openai_clip_b32         shuffle              5            0.1199       0.9083 0.0917              0.6473 900
+     openai_clip_b32         replace              4            0.0457       0.9270 0.0730              0.5973 900
+     openai_clip_b32            mask              4            0.0689       0.9389 0.0611              0.5974 900
+     openai_clip_b32         replace              5            0.0224       0.9703 0.0297              0.7938 900
+     openai_clip_b32            mask              5            0.0390       0.9951 0.0049              0.7939 900
+     openai_clip_l14         shuffle              1            0.1665       0.2374 0.7626              0.1040 900
+     openai_clip_l14         shuffle              2            0.1649       0.2500 0.7500              0.1110 900
+     openai_clip_l14            mask              1            0.1601       0.2593 0.7407              0.1018 900
+     openai_clip_l14         replace              1            0.1543       0.2719 0.7281              0.1018 900
+     openai_clip_l14            mask              2            0.1422       0.4837 0.5163              0.2061 900
+     openai_clip_l14         replace              2            0.1297       0.4965 0.5035              0.2061 900
+     openai_clip_l14         shuffle              3            0.1527       0.6139 0.3861              0.2958 900
+     openai_clip_l14         replace              3            0.0892       0.8052 0.1948              0.4026 900
+     openai_clip_l14            mask              3            0.1112       0.8057 0.1943              0.4026 900
+     openai_clip_l14         shuffle              4            0.1425       0.8226 0.1774              0.4751 900
+     openai_clip_l14         shuffle              5            0.1323       0.9083 0.0917              0.6473 900
+     openai_clip_l14         replace              4            0.0535       0.9270 0.0730              0.5973 900
+     openai_clip_l14            mask              4            0.0780       0.9389 0.0611              0.5974 900
+     openai_clip_l14         replace              5            0.0249       0.9703 0.0297              0.7938 900
+     openai_clip_l14            mask              5            0.0432       0.9951 0.0049              0.7939 900
+openclip_l14_laion2b         shuffle              1            0.2771       0.2374 0.7626              0.1040 900
+openclip_l14_laion2b         shuffle              2            0.2751       0.2500 0.7500              0.1110 900
+openclip_l14_laion2b            mask              1            0.2675       0.2593 0.7407              0.1018 900
+openclip_l14_laion2b         replace              1            0.2492       0.2719 0.7281              0.1018 900
+openclip_l14_laion2b            mask              2            0.2436       0.4837 0.5163              0.2061 900
+openclip_l14_laion2b         replace              2            0.2120       0.4965 0.5035              0.2061 900
+openclip_l14_laion2b         shuffle              3            0.2615       0.6139 0.3861              0.2958 900
+openclip_l14_laion2b         replace              3            0.1487       0.8052 0.1948              0.4026 900
+openclip_l14_laion2b            mask              3            0.1950       0.8057 0.1943              0.4026 900
+openclip_l14_laion2b         shuffle              4            0.2493       0.8226 0.1774              0.4751 900
+openclip_l14_laion2b         shuffle              5            0.2356       0.9083 0.0917              0.6473 900
+openclip_l14_laion2b         replace              4            0.0892       0.9270 0.0730              0.5973 900
+openclip_l14_laion2b            mask              4            0.1393       0.9389 0.0611              0.5974 900
+openclip_l14_laion2b         replace              5            0.0438       0.9703 0.0297              0.7938 900
+openclip_l14_laion2b            mask              5            0.0760       0.9951 0.0049              0.7939 900
+      pecore_l14_336         shuffle              1            0.2228       0.2374 0.7626              0.1040 900
+      pecore_l14_336         shuffle              2            0.2212       0.2500 0.7500              0.1110 900
+      pecore_l14_336            mask              1            0.2156       0.2593 0.7407              0.1018 900
+      pecore_l14_336         replace              1            0.2017       0.2719 0.7281              0.1018 900
+      pecore_l14_336            mask              2            0.1960       0.4837 0.5163              0.2061 900
+      pecore_l14_336         replace              2            0.1689       0.4965 0.5035              0.2061 900
+      pecore_l14_336         shuffle              3            0.2096       0.6139 0.3861              0.2958 900
+      pecore_l14_336         replace              3            0.1154       0.8052 0.1948              0.4026 900
+      pecore_l14_336            mask              3            0.1560       0.8057 0.1943              0.4026 900
+      pecore_l14_336         shuffle              4            0.1985       0.8226 0.1774              0.4751 900
+      pecore_l14_336         shuffle              5            0.1878       0.9083 0.0917              0.6473 900
+      pecore_l14_336         replace              4            0.0671       0.9270 0.0730              0.5973 900
+      pecore_l14_336            mask              4            0.1114       0.9389 0.0611              0.5974 900
+      pecore_l14_336         replace              5            0.0327       0.9703 0.0297              0.7938 900
+      pecore_l14_336            mask              5            0.0656       0.9951 0.0049              0.7939 900
+  siglip2_so400m_384         shuffle              1            0.2024       0.2374 0.7626              0.1040 900
+  siglip2_so400m_384         shuffle              2            0.2004       0.2500 0.7500              0.1110 900
+  siglip2_so400m_384            mask              1            0.1953       0.2593 0.7407              0.1018 900
+  siglip2_so400m_384         replace              1            0.1873       0.2719 0.7281              0.1018 900
+  siglip2_so400m_384            mask              2            0.1764       0.4837 0.5163              0.2061 900
+  siglip2_so400m_384         replace              2            0.1577       0.4965 0.5035              0.2061 900
+  siglip2_so400m_384         shuffle              3            0.1897       0.6139 0.3861              0.2958 900
+  siglip2_so400m_384         replace              3            0.1049       0.8052 0.1948              0.4026 900
+  siglip2_so400m_384            mask              3            0.1351       0.8057 0.1943              0.4026 900
+  siglip2_so400m_384         shuffle              4            0.1775       0.8226 0.1774              0.4751 900
+  siglip2_so400m_384         shuffle              5            0.1671       0.9083 0.0917              0.6473 900
+  siglip2_so400m_384         replace              4            0.0604       0.9270 0.0730              0.5973 900
+  siglip2_so400m_384            mask              4            0.0918       0.9389 0.0611              0.5974 900
+  siglip2_so400m_384         replace              5            0.0271       0.9703 0.0297              0.7938 900
+  siglip2_so400m_384            mask              5            0.0539       0.9951 0.0049              0.7939 900
+
+--- Slope of retention_margin ~ damage, per model per modality ---
+Steeper negative slope = retrieval-side is more sensitive to damage in this modality.
+Note: image SSIM and text BLEU are NOT commensurate. Compare *shapes* across modalities, not raw slopes.
+               model modality   slope  intercept     R2     n
+     openai_clip_b32    image -0.0173     0.1425 0.0116 13500
+     openai_clip_b32     text -0.0974     0.1675 0.2782 13500
+     openai_clip_l14    image -0.0066     0.1584 0.0015 13500
+     openai_clip_l14     text -0.1077     0.1866 0.2729 13500
+openclip_l14_laion2b    image -0.0237     0.2662 0.0086 13500
+openclip_l14_laion2b     text -0.1683     0.3073 0.2854 13500
+      pecore_l14_336    image -0.0151     0.2144 0.0068 13500
+      pecore_l14_336     text -0.1384     0.2483 0.3084 13500
+  siglip2_so400m_384    image -0.0162     0.1948 0.0083 13500
+  siglip2_so400m_384     text -0.1318     0.2278 0.3093 13500
+
+==============================================================================
+3. QUINTILE-BINNED CALIBRATION TEST (matched within-modality damage)
+==============================================================================
+For each modality, sort all (pair × corruption × severity) observations by input
+damage, divide into 5 equal-N quintiles, and within each matched quintile compare
+the mean retention_margin (image-side image-corrupted vs text-side text-corrupted).
+The asymmetry headline survives if text-side retention_margin is consistently
+LOWER than image-side retention_margin within matched within-modality damage
+quintiles, i.e. (image - text) > 0 in matched quintiles.
+
+--- Condition-to-quintile mapping (sanity check, seed 0 only for compactness) ---
+
+IMAGE-side: damage_ssim quintile distribution by condition:
+quintile                          Q1 (mildest)    Q2    Q3    Q4  Q5 (most damaged)
+vision_corruption image_severity                                                   
+cutout            1                       1500     0     0     0                  0
+                  2                        900   600     0     0                  0
+                  3                          0  1500     0     0                  0
+                  4                          0    10  1490     0                  0
+                  5                          0     0    20  1480                  0
+gaussian_blur     1                       1500     0     0     0                  0
+                  2                        415   825   250    10                  0
+                  3                         30   465   580   385                 40
+                  4                         15   160   570   510                245
+                  5                         15    85   445   575                380
+gaussian_noise    1                        125   730   620    25                  0
+                  2                          0   105   360   835                200
+                  3                          0    20   145   490                845
+                  4                          0     0    20   170               1310
+                  5                          0     0     0    20               1480
+
+TEXT-side: damage_bleu quintile distribution by condition:
+quintile                       Q1 (mildest)   Q2   Q3   Q4  Q5 (most damaged)
+text_corruption text_severity                                                
+mask            1                      1275  225    0    0                  0
+                2                       260  940  290   10                  0
+                3                         0  100  880  510                 10
+                4                         0    0   75  660                765
+                5                         0    0    0    0               1500
+replace         1                      1030  470    0    0                  0
+                2                       170  945  375   10                  0
+                3                         0  110  900  490                  0
+                4                         0    0  210  945                345
+                5                         0    0    0  140               1360
+shuffle         1                       845  500  145   10                  0
+                2                       865  470  150   15                  0
+                3                       160  515  640  185                  0
+                4                        20  110  690  625                 55
+                5                         0   25  210  875                390
+
+--- Per-model retention_margin within matched quintiles (3-seed pooled) ---
+Lower retention_margin = worse coherence under that level of damage.
+               model          quintile  image_n  image_mean  image_ci_lo  image_ci_hi  text_n  text_mean  text_ci_lo  text_ci_hi  diff_image_minus_text  diff_ci_lo  diff_ci_hi  image_minus_text_>0  diff_significant
+     openai_clip_b32      Q1 (mildest)     2700      0.1495       0.1481       0.1507    2740     0.1440      0.1423      0.1455                 0.0055      0.0034      0.0076                 True              True
+     openai_clip_b32                Q2     2700      0.1406       0.1394       0.1420    2663     0.1313      0.1295      0.1328                 0.0093      0.0072      0.0115                 True              True
+     openai_clip_b32                Q3     2700      0.1287       0.1272       0.1303    2709     0.1094      0.1077      0.1111                 0.0193      0.0167      0.0216                 True              True
+     openai_clip_b32                Q4     2700      0.1197       0.1180       0.1215    2725     0.0876      0.0857      0.0896                 0.0321      0.0294      0.0347                 True              True
+     openai_clip_b32 Q5 (most damaged)     2700      0.1422       0.1409       0.1436    2663     0.0467      0.0450      0.0486                 0.0955      0.0931      0.0976                 True              True
+     openai_clip_l14      Q1 (mildest)     2700      0.1651       0.1637       0.1665    2740     0.1608      0.1589      0.1625                 0.0043      0.0020      0.0067                 True              True
+     openai_clip_l14                Q2     2700      0.1567       0.1552       0.1582    2663     0.1459      0.1439      0.1477                 0.0108      0.0085      0.0132                 True              True
+     openai_clip_l14                Q3     2700      0.1495       0.1478       0.1511    2709     0.1235      0.1215      0.1253                 0.0261      0.0233      0.0285                 True              True
+     openai_clip_l14                Q4     2700      0.1441       0.1422       0.1459    2725     0.0975      0.0954      0.0998                 0.0466      0.0436      0.0495                 True              True
+     openai_clip_l14 Q5 (most damaged)     2700      0.1641       0.1627       0.1656    2663     0.0530      0.0510      0.0552                 0.1110      0.1085      0.1136                 True              True
+openclip_l14_laion2b      Q1 (mildest)     2700      0.2736       0.2715       0.2755    2740     0.2644      0.2620      0.2666                 0.0092      0.0061      0.0123                 True              True
+openclip_l14_laion2b                Q2     2700      0.2622       0.2599       0.2643    2663     0.2472      0.2446      0.2497                 0.0150      0.0118      0.0183                 True              True
+openclip_l14_laion2b                Q3     2700      0.2498       0.2470       0.2523    2709     0.2105      0.2075      0.2133                 0.0393      0.0352      0.0429                 True              True
+openclip_l14_laion2b                Q4     2700      0.2352       0.2323       0.2382    2725     0.1712      0.1677      0.1748                 0.0640      0.0594      0.0686                 True              True
+openclip_l14_laion2b Q5 (most damaged)     2700      0.2662       0.2640       0.2683    2663     0.0929      0.0897      0.0964                 0.1733      0.1694      0.1774                 True              True
+      pecore_l14_336      Q1 (mildest)     2700      0.2199       0.2183       0.2215    2740     0.2142      0.2124      0.2160                 0.0058      0.0033      0.0082                 True              True
+      pecore_l14_336                Q2     2700      0.2107       0.2091       0.2124    2663     0.1979      0.1960      0.2000                 0.0128      0.0103      0.0153                 True              True
+      pecore_l14_336                Q3     2700      0.2031       0.2013       0.2049    2709     0.1668      0.1644      0.1690                 0.0363      0.0335      0.0391                 True              True
+      pecore_l14_336                Q4     2700      0.1980       0.1961       0.1999    2725     0.1354      0.1326      0.1383                 0.0626      0.0592      0.0660                 True              True
+      pecore_l14_336 Q5 (most damaged)     2700      0.2125       0.2108       0.2141    2663     0.0746      0.0720      0.0773                 0.1379      0.1350      0.1412                 True              True
+  siglip2_so400m_384      Q1 (mildest)     2700      0.2001       0.1986       0.2016    2740     0.1952      0.1933      0.1971                 0.0049      0.0024      0.0075                 True              True
+  siglip2_so400m_384                Q2     2700      0.1917       0.1901       0.1933    2663     0.1803      0.1783      0.1825                 0.0114      0.0090      0.0141                 True              True
+  siglip2_so400m_384                Q3     2700      0.1829       0.1812       0.1847    2709     0.1500      0.1478      0.1523                 0.0329      0.0300      0.0357                 True              True
+  siglip2_so400m_384                Q4     2700      0.1765       0.1746       0.1785    2725     0.1191      0.1168      0.1216                 0.0574      0.0542      0.0605                 True              True
+  siglip2_so400m_384 Q5 (most damaged)     2700      0.1927       0.1911       0.1942    2663     0.0632      0.0610      0.0655                 0.1295      0.1269      0.1324                 True              True
+
+→ Saved: results/calibration_quintile_test.csv
+
+--- HEADLINE: how often does image_retention > text_retention within matched quintiles? ---
+               model  n_quintiles  image_higher  sig_quintiles  all_quintiles_image_higher  all_quintiles_significant
+     openai_clip_b32            5             5              5                        True                       True
+     openai_clip_l14            5             5              5                        True                       True
+openclip_l14_laion2b            5             5              5                        True                       True
+      pecore_l14_336            5             5              5                        True                       True
+  siglip2_so400m_384            5             5              5                        True                       True
+
+==============================================================================
+4. CROSSOVER CHECK — does mildest text condition still outperform most-severe image condition?
+==============================================================================
+               model  image_top_quintile_mean_retention  image_ci_lo  image_ci_hi  text_bottom_quintile_mean_retention  text_ci_lo  text_ci_hi  text_bottom > image_top?
+     openai_clip_b32                             0.1422       0.1409       0.1436                               0.1440      0.1423      0.1455                      True
+     openai_clip_l14                             0.1641       0.1627       0.1656                               0.1608      0.1589      0.1625                     False
+openclip_l14_laion2b                             0.2662       0.2640       0.2683                               0.2644      0.2620      0.2666                     False
+      pecore_l14_336                             0.2125       0.2108       0.2141                               0.2142      0.2124      0.2160                      True
+  siglip2_so400m_384                             0.1927       0.1911       0.1942                               0.1952      0.1933      0.1971                      True
+
+Report this in the paper only if 'text_bottom > image_top?' is False for every model
+(i.e., the mildest text corruption leaves more retention than the most severe image corruption).
+
+==============================================================================
+5. EMBEDDING-FIDELITY CALIBRATION (model-internal diagnostic)
+==============================================================================
+Late-layer cosine fidelity per (model, severity), from existing image_fidelity / text_fidelity spokes.
+This is NOT the primary calibration (uses CLIP's own representation), only a parallel diagnostic.
+
+--- Image final-embedding fidelity (mean cosine over corruption types and pairs) ---
+image_severity             1       2       3       4       5
+model                                                       
+openai_clip_b32       0.9744  0.9488  0.9020  0.8352  0.7770
+openai_clip_l14       0.9164  0.8526  0.7606  0.6589  0.5829
+openclip_l14_laion2b  0.9188  0.8546  0.7698  0.6764  0.6002
+pecore_l14_336        0.8936  0.8194  0.7447  0.6689  0.6097
+siglip2_so400m_384    0.8961  0.8108  0.7111  0.6074  0.5218
+
+--- Text final-embedding fidelity ---
+text_severity              1       2       3       4       5
+model                                                       
+openai_clip_b32       0.9230  0.8548  0.7182  0.6005  0.4984
+openai_clip_l14       0.9052  0.8281  0.6760  0.5478  0.4370
+openclip_l14_laion2b  0.9304  0.8668  0.7314  0.6074  0.4930
+pecore_l14_336        0.9658  0.9330  0.8676  0.8076  0.7516
+siglip2_so400m_384    0.8831  0.8021  0.6461  0.5201  0.4258
+
+==============================================================================
+6. MEASURED-DAMAGE DOMINANCE REGRESSION (parallel to ordinal-severity version)
+==============================================================================
+Joint conditions: vision=gaussian_noise × text=mask, severities 1..5 each.
+Replace ordinal severity with image_damage_percentile and text_damage_percentile.
+Hypothesis: R²(more_damaged) > R²(less_damaged), mirroring the ordinal version.
+
+               model    predictor   slope  intercept     R2     n
+     openai_clip_b32 more_damaged -0.0836     0.1861 0.1163 22500
+     openai_clip_b32 less_damaged -0.0783     0.1555 0.2141 22500
+     openai_clip_l14 more_damaged -0.0850     0.2017 0.0981 22500
+     openai_clip_l14 less_damaged -0.0867     0.1743 0.2147 22500
+openclip_l14_laion2b more_damaged -0.1077     0.3245 0.0883 22500
+openclip_l14_laion2b less_damaged -0.0971     0.2830 0.1507 22500
+      pecore_l14_336 more_damaged -0.1189     0.2728 0.1223 22500
+      pecore_l14_336 less_damaged -0.1162     0.2318 0.2454 22500
+  siglip2_so400m_384 more_damaged -0.0779     0.2356 0.0935 22500
+  siglip2_so400m_384 less_damaged -0.0733     0.2073 0.1742 22500
+
+Measured-damage dominance summary:
+predictor             less_damaged  more_damaged  more_minus_less  more_wins?
+model                                                                        
+openai_clip_b32             0.2141        0.1163          -0.0978       False
+openai_clip_l14             0.2147        0.0981          -0.1166       False
+openclip_l14_laion2b        0.1507        0.0883          -0.0624       False
+pecore_l14_336              0.2454        0.1223          -0.1231       False
+siglip2_so400m_384          0.1742        0.0935          -0.0807       False
+
+For reference, the ORIGINAL ordinal-severity version (3-seed mean):
+(Already computed in scripts/review_3seeds.py; both should give the same direction.)
+
+==============================================================================
+DONE
+==============================================================================

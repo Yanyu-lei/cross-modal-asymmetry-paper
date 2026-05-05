@@ -1,0 +1,20 @@
+\begin{table}[h]
+\centering
+\caption{Recall@1 at the mildest (Q1) and most-damaged (Q5) within-modality damage quintiles, with hierarchical bootstrap 95\% CIs across 3 seeds and 1000 retrieval pairs. Clean refers to the no-corruption condition computed in a dedicated retrieval pass. Drop columns are (clean R@1) minus (Q5 R@1); the gap (rightmost) is t2i drop minus i2t drop. Across all five models the Q5 t2i drop substantially exceeds the Q5 i2t drop, and Q5 t2i Recall@1 collapses to single-digit percent.}
+\label{tab:t2_headline}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Clean R@1} & \multicolumn{2}{c}{Q1 (mildest)} & \multicolumn{2}{c}{Q5 (most damaged)} & \multicolumn{3}{c}{Q5 drop from clean} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-10}
+Model & i2t & t2i & i2t & t2i & i2t & t2i & i2t & t2i & gap \\
+\midrule
+CLIP B/32 & 0.53 & 0.49 & 0.49 & 0.44 & 0.47 & 0.08 & +0.05 & +0.41 & +0.36 \\
+CLIP L/14 & 0.56 & 0.53 & 0.53 & 0.48 & 0.53 & 0.09 & +0.03 & +0.44 & +0.41 \\
+OpenCLIP L/14 (LAION) & 0.65 & 0.66 & 0.62 & 0.60 & 0.59 & 0.13 & +0.05 & +0.53 & +0.48 \\
+SigLIP 2 SO400M & 0.70 & 0.72 & 0.68 & 0.67 & 0.67 & 0.14 & +0.03 & +0.58 & +0.55 \\
+PE-Core L/14 & 0.70 & 0.71 & 0.70 & 0.66 & 0.68 & 0.14 & +0.02 & +0.57 & +0.55 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,43 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS metadata
+.DS_Store
+
+# Virtual environment
+.venv/
+
+# Pytest cache
+.pytest_cache/
+.benchmarks/
+
+# Editor / OS
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Environment / secrets
+.env
+.env.local
+
+# Local-only artifacts (not part of the code release)
+results/logs/
+.claude/
+SUPPLEMENTARY_EXCLUDE.md
+
+# Raw inference outputs (regenerable via run_full_experiment.py +
+# post-inference compute_* scripts; sizes exceed practical limits for
+# code-repo distribution).
+results/per_pair_retrieval_v2/
+results/seed0/
+results/seed1/
+results/seed2/
+results/pooling_probe/
+results/coco_manifest.json
+
+# Paper LaTeX source and build artifacts (the compiled PDF is distributed
+# separately from this code release).
+paper/

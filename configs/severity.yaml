@@ -1,0 +1,43 @@
+# Severity table.
+# Severity 0 is implicit (clean reference, never written to CSV).
+# All values configurable; spokes pull native parameters via corruptions.severity.
+
+image:
+  gaussian_noise:        # std dev on [0, 255] pixel scale
+    1: 8
+    2: 16
+    3: 24
+    4: 40
+    5: 64
+  gaussian_blur:         # PIL.ImageFilter.GaussianBlur radius (px)
+    1: 0.5
+    2: 1.0
+    3: 2.0
+    4: 3.5
+    5: 5.0
+  cutout:                # fraction of image area occluded by single rectangle
+    1: 0.05
+    2: 0.10
+    3: 0.20
+    4: 0.35
+    5: 0.50
+
+text:
+  mask:                  # fraction of tokens replaced with model's mask/EOS token
+    1: 0.10
+    2: 0.20
+    3: 0.40
+    4: 0.60
+    5: 0.80
+  shuffle:               # fraction of token positions randomly permuted
+    1: 0.10
+    2: 0.20
+    3: 0.40
+    4: 0.60
+    5: 0.80
+  replace:               # fraction of tokens replaced with random vocab tokens
+    1: 0.10
+    2: 0.20
+    3: 0.40
+    4: 0.60
+    5: 0.80

@@ -1,0 +1,26 @@
+
+=== seed 0, offset 0, n 300 ===
+  image/gaussian_noise:  1500 rows in  83.6s
+  image/gaussian_blur :  1500 rows in  75.6s
+  image/cutout        :  1500 rows in  69.7s
+  text /mask          :  1500 rows in   0.1s
+  text /shuffle       :  1500 rows in   0.2s
+  text /replace       :  1500 rows in   0.2s
+
+=== seed 1, offset 300, n 300 ===
+  image/gaussian_noise:  1500 rows in  89.5s
+  image/gaussian_blur :  1500 rows in  81.7s
+  image/cutout        :  1500 rows in  73.5s
+  text /mask          :  1500 rows in   0.1s
+  text /shuffle       :  1500 rows in   0.2s
+  text /replace       :  1500 rows in   0.2s
+
+=== seed 2, offset 600, n 300 ===
+  image/gaussian_noise:  1500 rows in  78.5s
+  image/gaussian_blur :  1500 rows in  62.2s
+  image/cutout        :  1500 rows in  55.3s
+  text /mask          :  1500 rows in   0.1s
+  text /shuffle       :  1500 rows in   0.1s
+  text /replace       :  1500 rows in   0.1s
+
+Wrote 27,000 rows to results/input_damage.csv in 677.6s

@@ -1,0 +1,19 @@
+\begin{table}[h]
+\centering
+\caption{Two-component decomposition of the asymmetry, per model. Sev 1 retention columns capture the baseline component: mean-pool retention is uniformly lower than standard-pool retention. Drop columns capture the slope component: mean-pool reduces the within-text sev 1 to sev 5 retention drop by 24 to 75 percent across models (PE-Core 24, B/32 34, LAION L/14 37, L/14 43, SigLIP 2 75). The drop reduction percent is an upper-bound proxy for the pooling bottleneck's contribution to the slope component.}
+\label{tab:t5_pooling}
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{2}{c}{Sev 1 retention} & \multicolumn{2}{c}{Sev 1$\to$5 drop} & \multicolumn{2}{c}{Drop reduction} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Model & std pool & mean pool & std pool & mean pool & absolute & \% \\
+\midrule
+CLIP B/32 & 0.144 & 0.100 & 0.083 & 0.055 & 0.028 & 34\% \\
+CLIP L/14 & 0.160 & 0.099 & 0.093 & 0.053 & 0.040 & 43\% \\
+OpenCLIP L/14 (LAION) & 0.265 & 0.167 & 0.146 & 0.092 & 0.054 & 37\% \\
+SigLIP 2 SO400M & 0.195 & 0.049 & 0.112 & 0.028 & 0.084 & 75\% \\
+PE-Core L/14 & 0.213 & 0.161 & 0.118 & 0.090 & 0.028 & 24\% \\
+\bottomrule
+\end{tabular}
+\end{table}

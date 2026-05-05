@@ -1,0 +1,17 @@
+\begin{table}[h]
+\centering
+\caption{Model summary. Five CLIP-family models spanning architecture, training corpus, image resolution, text context length, and contrastive loss. The early-text-depth fraction (last column) is set per model from a diagnostic that finds the layer at which masked-text cosine similarity first drops below 0.95.}
+\label{tab:t1_models}
+\small
+\begin{tabular}{llrlrll}
+\toprule
+Model & Architecture & Params & Training data & Img.\ res.\ & Text ctx & Loss \\
+\midrule
+CLIP B/32 & ViT-B/32 & 151M & WIT (OpenAI) & 224 & 77 & softmax \\
+CLIP L/14 & ViT-L/14 & 428M & WIT (OpenAI) & 224 & 77 & softmax \\
+OpenCLIP L/14 (LAION) & ViT-L/14 & 428M & LAION-2B & 224 & 77 & softmax \\
+SigLIP 2 SO400M & ViT-SO400M & 1.13B & WebLI & 384 & 64 & sigmoid \\
+PE-Core L/14 & ViT-L/14 (PE-Core) & 428M & Meta PE-Core & 336 & 32 & softmax \\
+\bottomrule
+\end{tabular}
+\end{table}

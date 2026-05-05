@@ -1,0 +1,38 @@
+
+=== seed 0 (retrieval seed 50000, n=1000) ===
+  image/gaussian_noise sev=1: 1000 rows in 38.0s
+  image/gaussian_noise sev=2: 1000 rows in 39.1s
+  image/gaussian_noise sev=3: 1000 rows in 38.8s
+  image/gaussian_noise sev=4: 1000 rows in 38.2s
+  image/gaussian_noise sev=5: 1000 rows in 37.9s
+  text /mask  sev=1: 1000 rows in 0.1s
+  text /mask  sev=2: 1000 rows in 0.1s
+  text /mask  sev=3: 1000 rows in 0.1s
+  text /mask  sev=4: 1000 rows in 0.1s
+  text /mask  sev=5: 1000 rows in 0.0s
+
+=== seed 1 (retrieval seed 50001, n=1000) ===
+  image/gaussian_noise sev=1: 1000 rows in 40.5s
+  image/gaussian_noise sev=2: 1000 rows in 42.0s
+  image/gaussian_noise sev=3: 1000 rows in 43.7s
+  image/gaussian_noise sev=4: 1000 rows in 43.5s
+  image/gaussian_noise sev=5: 1000 rows in 42.1s
+  text /mask  sev=1: 1000 rows in 0.1s
+  text /mask  sev=2: 1000 rows in 0.1s
+  text /mask  sev=3: 1000 rows in 0.1s
+  text /mask  sev=4: 1000 rows in 0.1s
+  text /mask  sev=5: 1000 rows in 0.0s
+
+=== seed 2 (retrieval seed 50002, n=1000) ===
+  image/gaussian_noise sev=1: 1000 rows in 42.7s
+  image/gaussian_noise sev=2: 1000 rows in 41.7s
+  image/gaussian_noise sev=3: 1000 rows in 41.9s
+  image/gaussian_noise sev=4: 1000 rows in 42.1s
+  image/gaussian_noise sev=5: 1000 rows in 40.7s
+  text /mask  sev=1: 1000 rows in 0.1s
+  text /mask  sev=2: 1000 rows in 0.1s
+  text /mask  sev=3: 1000 rows in 0.1s
+  text /mask  sev=4: 1000 rows in 0.1s
+  text /mask  sev=5: 1000 rows in 0.0s
+
+Wrote 30,000 rows to results/input_damage_retrieval.csv in 623.7s

@@ -1,0 +1,48 @@
+# Five-model registry.
+# Each entry produces a ModelAdapter via src.models.registry.load_model.
+#
+# image_depth_fractions: where to sample image-encoder hidden states
+#   (proportional: 25% / 60% / last). Computed at adapter init from each model's
+#   actual transformer block count.
+#
+# text_early_depth_fraction: starting fraction for the "early" text depth.
+#   Set per-model from results/text_depth_diagnostic.csv. 0.40 is the
+#   default fallback. Note: pooled text representations at very early layers
+#   may show artificially high similarity regardless of corruption — the
+#   diagnostic identifies where deviation actually begins for each model.
+
+models:
+  openai_clip_b32:
+    backend: open_clip
+    arch: ViT-B-32-quickgelu  # OpenAI weights trained with QuickGELU
+    pretrained: openai
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.42, 0.60, 1.0]   # diagnostic: cos<0.95 at layer 4/12
+
+  openai_clip_l14:
+    backend: open_clip
+    arch: ViT-L-14-quickgelu
+    pretrained: openai
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.42, 0.60, 1.0]   # diagnostic: cos<0.95 at layer 4/12
+
+  openclip_l14_laion2b:
+    backend: open_clip
+    arch: ViT-L-14
+    pretrained: laion2b_s32b_b82k
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.25, 0.60, 1.0]   # diagnostic: cos<0.95 at layer 2/12
+
+  siglip2_so400m_384:
+    backend: open_clip
+    arch: ViT-SO400M-16-SigLIP2-384
+    pretrained: webli
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.26, 0.60, 1.0]   # diagnostic: cos<0.95 at layer 6/27
+
+  pecore_l14_336:
+    backend: pe_core
+    arch: PE-Core-L14-336
+    pretrained: true
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.40, 0.60, 1.0]   # diagnostic: cos<0.95 only at layer 9/24; PE-Core text is unusually robust to masking — flagged for paper

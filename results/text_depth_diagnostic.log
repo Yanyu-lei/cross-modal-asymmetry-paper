@@ -1,0 +1,40 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+=== openai_clip_b32 ===
+  n_text_layers=12  context_length=77
+  layer cosine (clean vs sev2-mask), sample: [(0, 0.991), (3, 0.959), (6, 0.926), (9, 0.935), (11, 0.889)]
+  → recommended early depth fraction: 0.417
+
+=== openai_clip_l14 ===
+  n_text_layers=12  context_length=77
+  layer cosine (clean vs sev2-mask), sample: [(0, 0.988), (3, 0.956), (6, 0.89), (9, 0.885), (11, 0.853)]
+  → recommended early depth fraction: 0.417
+
+=== openclip_l14_laion2b ===
+  n_text_layers=12  context_length=77
+  layer cosine (clean vs sev2-mask), sample: [(0, 0.969), (3, 0.898), (6, 0.877), (9, 0.897), (11, 0.905)]
+  → recommended early depth fraction: 0.250
+
+=== siglip2_so400m_384 ===
+  n_text_layers=27  context_length=64
+  layer cosine (clean vs sev2-mask), sample: [(0, 0.992), (6, 0.94), (13, 0.915), (20, 0.898), (26, 0.876)]
+  → recommended early depth fraction: 0.259
+
+=== pecore_l14_336 ===
+Missing keys for loading model: []
+Unexpected keys for loading model: []
+  n_text_layers=24  context_length=32
+  layer cosine (clean vs sev2-mask), sample: [(0, 0.991), (6, 0.977), (12, 0.976), (18, 0.988), (23, 0.952)]
+  → recommended early depth fraction: 0.400
+
+Wrote 87 rows to results/text_depth_diagnostic.csv
+
+=== Recommended text early-depth fractions ===
+  openai_clip_b32                 0.417
+  openai_clip_l14                 0.417
+  openclip_l14_laion2b            0.250
+  siglip2_so400m_384              0.259
+  pecore_l14_336                  0.400
+
+(threshold=0.95, fallback=0.4)
