@@ -1,4 +1,4 @@
-# Calibrated cross-modal asymmetry in contrastive vision-language models
+# Text-side fragility in contrastive vision-language retrieval
 
 This repository contains the analysis pipeline and the canonical aggregated artifacts for the paper. Every headline number, table, and figure is materialised under `results/` and `paper/` from a prior run of the pipeline. Re-running the pipeline end-to-end (model inference + post-inference analyses) requires GPU compute and is documented separately below.
 
