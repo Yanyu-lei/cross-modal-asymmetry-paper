@@ -1,5 +1,9 @@
 # Text-side fragility in contrastive vision-language retrieval
 
+Author: Yanyu Lei · Harvard University
+![Figure 1](results/figures/f1_retrieval_asymmetry.png)
+In this study, we damage image and text at controlled levels in order to test the retrieval robustness of contrastive models under input degradation. Our principal finding is that, at the highest matched levels of damage, text-to-image retrieval performs 4.6 to 5.8 times worse than image-to-text retrieval across five models. These models underpin many modern search systems, and considering that text-to-image is the most common interface for users, we believe this weakness deserves more attention.
+
 This repository contains the analysis pipeline and the canonical aggregated artifacts for the paper. Every headline number, table, and figure is materialised under `results/` and `paper/` from a prior run of the pipeline. Re-running the pipeline end-to-end (model inference + post-inference analyses) requires GPU compute and is documented separately below.
 
 ## Setup
