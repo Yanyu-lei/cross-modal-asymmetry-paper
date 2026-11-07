@@ -1,0 +1,49 @@
+# The five models. src/load_models.py builds each one by name with load_model.
+#
+# image_depth_fractions and text_depth_fractions set the early, middle and last layers where
+# fidelity is measured, as fractions of each tower's block count. A fraction becomes a block
+# index when the model loads, so the same fraction works for towers of different depths.
+#
+# The early text depth is set by hand from results/model_outputs/text_depth_diagnostic.csv,
+# which masks 20% of the words in all 4,000 released captions of both datasets. It is the first
+# layer where the pooled mean cosine between masked and clean captions falls below 0.95. Before
+# that layer the two vectors look nearly the same, so measuring fidelity there would tell us
+# little. When no layer before the middle one falls below 0.95, the early depth falls back to
+# 0.40. tests/test_depth_settings.py checks these values against the diagnostic file. Layer
+# numbers in the comments below count from 0, like layer_index in that file, so "layer 3 of 12"
+# is the fourth block.
+
+models:
+  openai_clip_b32:
+    backend: open_clip
+    arch: ViT-B-32-quickgelu  # OpenAI weights trained with QuickGELU
+    pretrained: openai
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.33, 0.60, 1.0]   # cosine first falls below 0.95 at layer 3 of 12
+
+  openai_clip_l14:
+    backend: open_clip
+    arch: ViT-L-14-quickgelu
+    pretrained: openai
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.33, 0.60, 1.0]   # cosine first falls below 0.95 at layer 3 of 12
+
+  openclip_l14_laion2b:
+    backend: open_clip
+    arch: ViT-L-14
+    pretrained: laion2b_s32b_b82k
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.25, 0.60, 1.0]   # cosine first falls below 0.95 at layer 2 of 12
+
+  siglip2_so400m_384:
+    backend: open_clip
+    arch: ViT-SO400M-16-SigLIP2-384
+    pretrained: webli
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.22, 0.60, 1.0]   # cosine first falls below 0.95 at layer 5 of 27
+
+  pecore_l14_336:
+    backend: pe_core
+    arch: PE-Core-L14-336  # always loaded with its released weights
+    image_depth_fractions: [0.25, 0.60, 1.0]
+    text_depth_fractions:  [0.40, 0.60, 1.0]   # cosine falls below 0.95 only at the last layer, so the 0.40 fallback is used

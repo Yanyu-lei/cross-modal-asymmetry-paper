@@ -1,0 +1,55 @@
+# Every run behind the paper. `python -m scripts.run_experiments` runs all of them, or the
+# ones named on the command line. `--list` lists them.
+#
+#   kind      fidelity_retention, retrieval or text_depth_diagnostic
+#   dataset   coco or flickr30k
+#   pairs     pairs per seed
+#
+# Each fidelity-retention and retrieval run uses every model, seed and severity in the
+# settings. The text-depth diagnostic runs once per model at its fixed seed and severity.
+# Each run's output files are named after the run (see
+# src/file_paths.py). A retrieval run can name its own corruptions; otherwise it uses the
+# lists in configs/experiment_settings.yaml.
+
+runs:
+  coco_300_pairs_fidelity_retention:
+    what: Image and text fidelity, match retention, the noise x mask grid and the
+      text-pooling ablation, plus the input damage of each corrupted input.
+    kind: fidelity_retention
+    dataset: coco
+    pairs: 300
+
+  flickr30k_300_pairs_fidelity_retention:
+    what: The same measurements on Flickr30K.
+    kind: fidelity_retention
+    dataset: flickr30k
+    pairs: 300
+
+  coco_2000_pairs_retrieval:
+    what: Recall@1/5/10 at galleries of 250 to 2,000, clean and under every corruption,
+      with one row per query at galleries of 1,000 and 2,000, shared-space similarity
+      and the input damage of each corrupted query.
+    kind: retrieval
+    dataset: coco
+    pairs: 2000
+
+  flickr30k_2000_pairs_retrieval:
+    what: The same retrieval run on Flickr30K.
+    kind: retrieval
+    dataset: flickr30k
+    pairs: 2000
+
+  coco_2000_pairs_retrieval_object_cutout:
+    what: Retrieval with whole COCO objects blacked out until they cover at least the rectangle
+      cutout's nominal area at each level, or every object when they cover less. It is reported on
+      its own and stays out of the quintile bins.
+    kind: retrieval
+    dataset: coco
+    pairs: 2000
+    image_corruptions: [object_cutout]
+    text_corruptions: []
+
+  text_depth_diagnostic:
+    what: The layer where each model's text vectors first react to a masked caption,
+      from all 4,000 released captions of both datasets. The chosen depths are set in configs/model_settings.yaml.
+    kind: text_depth_diagnostic

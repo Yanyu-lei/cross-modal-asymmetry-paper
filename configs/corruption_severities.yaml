@@ -1,0 +1,39 @@
+# The strength of each corruption at levels 1 to 5. src/corruptions.py reads this file.
+# Level 0 means the clean input and is never looked up.
+
+image:
+  gaussian_noise:   # standard deviation on the 0-255 pixel scale
+    1: 8
+    2: 16
+    3: 24
+    4: 40
+    5: 64
+  gaussian_blur:    # PIL GaussianBlur radius in pixels
+    1: 0.5
+    2: 1.0
+    3: 2.0
+    4: 3.5
+    5: 5.0
+  cutout:           # share of the image area blacked out by one rectangle
+    1: 0.05
+    2: 0.10
+    3: 0.20
+    4: 0.35
+    5: 0.50
+  object_cutout:    # target share of the image area for whole objects, the same as cutout's
+    1: 0.05
+    2: 0.10
+    3: 0.20
+    4: 0.35
+    5: 0.50
+
+# Every text corruption selects the same nominal share of a caption's words at each level,
+# rounded, with at least one word (two for shuffle, which needs two to move). Mask deletes them, shuffle moves them among their positions, replace swaps them for
+# random words and typo misspells each of them once. A selected word can end up unchanged,
+# for example when shuffle puts it back in place, so the measured damage is what counts.
+text_word_share:
+  1: 0.10
+  2: 0.20
+  3: 0.40
+  4: 0.60
+  5: 0.80

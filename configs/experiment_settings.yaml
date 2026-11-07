@@ -1,0 +1,33 @@
+# The fixed settings of the study. Each value is written here once, and src/settings.py
+# reads it for the runs and the paper build.
+
+seeds: [0, 1, 2]
+severities: [1, 2, 3, 4, 5]
+
+image_corruptions: [gaussian_noise, gaussian_blur, cutout]
+text_corruptions: [mask, shuffle, replace, typo]
+# The quintile analysis bins these text corruptions. Typo is reported as its own curve.
+binned_text_corruptions: [mask, shuffle, replace]
+
+# The joint grid damages both sides at once, with these two corruptions at every pair of levels.
+noise_mask_grid:
+  image_corruption: gaussian_noise
+  text_corruption: mask
+
+# Match retention compares each damaged query with its own partner and with this many
+# random negatives drawn from outside the evaluated pairs.
+n_negatives: 64
+
+# Retrieval scores every query against nested galleries made of the first N pairs.
+gallery_sizes: [250, 500, 1000, 2000]
+per_pair_gallery_sizes: [1000, 2000]   # galleries that also get one row per query
+headline_gallery_size: 1000            # the gallery behind Table 2 and Figure 1
+recall_ks: [1, 5, 10]
+
+# Batch sizes change the last digits of some embeddings, so they stay fixed.
+batch_size:
+  images: 16
+  captions: 32
+  negative_captions: 16   # the negatives of the 300-pair runs are captions in batches of 16
+
+bootstrap_draws: 10000
